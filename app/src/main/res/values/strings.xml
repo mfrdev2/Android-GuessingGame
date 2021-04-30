@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">GuessingGame</string>
     <string name="won_text">Congratulations !!! You have won</string>
+    <string name="enter_your_guess_here_between_1_5">Enter your guess here between 1-5</string>
+    <string name="check">Check</string>
+    <string name="guessing_game">Guessing Game</string>
+    <string name="loss_statement">Sorry ! You have loss. The number was  </string>
+    <string name="error_statement">Sorry !! You are trying by wrong input.</string>
 
 </resources>

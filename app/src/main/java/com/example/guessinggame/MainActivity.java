@@ -27,17 +27,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String guessString = inputEditText.getText().toString();
-                int guess = Integer.parseInt(guessString);
-                Random random = new Random();
-                int randomNum =  random.nextInt(5)+1;
-                if(randomNum == guess){
-                    resultTextView.setTextColor(getResources().getColor(R.color.teal_200));
-                    resultTextView.setText(getResources().getString(R.string.won_text));
-                }else {
-                    resultTextView.setTextColor(getResources().getColor(R.color.purple_200));
-                    resultTextView.setText("Sorry ! You have loss. The number was "+randomNum);
+                if(guessString.equals("")){
+                    guessString = "0";
                 }
+
+                int guess = Integer.parseInt(guessString);
+                if(guess == 0 || guess>5){
+                    errorMessage();
+                }else {
+                    Random random = new Random();
+                    int randomNum =  random.nextInt(5)+1;
+                    if(randomNum == guess){
+                        resultTextView.setTextColor(getResources().getColor(R.color.teal_200));
+                        resultTextView.setText(getResources().getString(R.string.won_text));
+                    }else {
+                        resultTextView.setTextColor(getResources().getColor(R.color.purple_200));
+                        resultTextView.setText(String.format("%s %d", getResources().getString(R.string.loss_statement), randomNum));
+                    }
+                }
+
             }
         });
+    }
+    private void errorMessage(){
+        resultTextView.setTextColor(getResources().getColor(R.color.red));
+        resultTextView.setText(R.string.error_statement);
     }
 }
